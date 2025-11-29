@@ -1,0 +1,105 @@
+/*
+//TYPESCRIPT BASICS
+import viteLogo from '/vite.svg'  
+
+let fName:string;//string
+let age:number;//number
+let grades: number[];//array
+let inventory: [number, string];//tupple
+
+type Student = {
+  name: string,
+  age: number | string,//types can be more than one type, using the union character |, you can define two types
+  isClearedFee?: boolean//the ? makes the property optional
+
+}//abstraction - object property-types are defined at the top of the program
+
+
+let student1: Student =  {
+  name: "Godswill",
+  age: 20,
+  isClearedFee: true
+}
+//array of the student object
+let swEngineeringStudents: Student[];
+
+swEngineeringStudents = [
+  {
+    name: "Ajuoga Omondi",
+    age: 20
+  },
+  {
+    name: "Felix Rading",
+    age: 21
+  },
+  {
+    name: "dann ochieng",
+    age: "Nineteen",
+    isClearedFee: true
+  },
+  {
+    name: "Collins",
+    age: "twenty two",
+    isClearedFee: true
+  }
+]
+fName = "Godswill";
+
+age = 20;
+
+//DEFINING THE FUNCTION TYPE
+let printName: (name: string, age: number) => void;
+function printName(name, age){//the paraeter must also have it's type defined
+  console.log(name, age) 
+}
+printName("dan");
+
+
+console.log(fName);
+
+*/
+
+type and interface
+
+type X = {
+	a: string,
+	b: number
+}
+type Y = X & {
+	c: number,
+	d: string
+}//type Y will inherit the properties of X onto the ones newly defined
+
+
+using interface to inherit properties of one type to the other
+
+interface Person {
+	name: string,
+	age: number
+	}
+interface Guy extends Person {
+	proffession: string,
+	bloodGroup: string
+}
+
+
+inheriting properties of an interface into a type
+
+type Z = Person & {
+	school: string,
+	regNo: number
+}
+
+inheriting the properties of a type into an interface
+
+
+type Citizen = {
+	name: string,
+	yob: number
+	
+}
+interface Student extends Citizen {
+	regNo: string,
+	joinYear: number
+	}
+
