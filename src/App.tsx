@@ -3,8 +3,12 @@ import './App.css'
 import InputField from './components/InputField'
 import type { ToDo } from './models/toDo';
 import ToDoList from './components/ToDoList';
+import ToDoListPage from './pages/ToDoListPage';
+
+
+
 const App: React.FC = ()=> {//React Functonal component type(ctrl + space-view other types)
-const [toDo, setToDo] = useState<string>("")//define the type if the initial state in angular braces
+const [toDo, setToDo] = useState<string>("")//define the type of the initial state in angular braces
 const [toDos, setToDos] = useState<ToDo[]>([]);
 
 const handleAdd = (e: FormEvent) => {
@@ -17,11 +21,15 @@ const handleAdd = (e: FormEvent) => {
 }
 
   return (
- <div className='App'>
+    <>
+{/* <div className='App'>
   <span className="heading">Taskify</span>
   <InputField toDo={toDo} setToDo={setToDo} handleAdd={handleAdd}/>
   <ToDoList toDos={toDos} setToDos={setToDos}/>
- </div>
+ </div>*/
+}
+  <ToDoListPage />
+  </>
   )
 }
 
