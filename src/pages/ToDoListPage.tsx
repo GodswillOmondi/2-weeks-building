@@ -1,25 +1,18 @@
 import React from 'react';
-import { useState } from 'react';
 import InputField from '../components/InputField';
 import ToDoList from '../components/ToDoList';
 import type { ToDo } from '../models/toDo';
 
-
-const handleAdd = (e) => {
-    e.preventDefault();
-
-    if(toDo)
-        setToDos([...toDos, {id: Date.now(), toDo, isCompleted: false}]);
-        setToDo("");
-        console.log(toDos);
-
+interface Props {
+  toDo: ToDo,
+  toDos: ToDo[],
+  setToDos: React.Dispatch<React.SetStateAction<ToDo[]>>,
+  setToDo: React.Dispatch<React.SetStateAction<ToDo>>,
+  handleAdd: VoidFunction
 }
 
+const ToDoListPage: React.FC<Props> = ({toDo, toDos, setToDos, setToDo, handleAdd}) => {
 
-const ToDoListPage: React.FC = () => {
-
-const [toDo, setToDo] = useState<string>("");
-const [toDos, setToDos] = useState<ToDo[]>([]);
 
   return (
     <div className="App">
