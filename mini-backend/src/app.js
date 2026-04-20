@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //Returns middleware that only parses urlencoded bodies and only looks at requests where the Content-Type header matches the type option
 
 function createCounterMiddleware() {
-  let count = 0;
+  let count = 0; //lexical scoping
 
   return function (req, res, next) {
     count++;
@@ -23,7 +23,7 @@ function createCounterMiddleware() {
     next();
   };
 }
-const countMiddleware = createCounterMiddleware();
+const countMiddleware = createCounterMiddleware(); //closure mechanism
 const healthMiddleware = createCounterMiddleware();
 app.get("/count", countMiddleware, (req, res) => {
   try {
@@ -33,7 +33,7 @@ app.get("/count", countMiddleware, (req, res) => {
   }
 });
 
-app.get("/api/health", (req, res) => {
+app.get("/api/health", healthMiddleware, (req, res) => {
   res.status(200).json({ message: "server ok", hits: req.hitCount });
 });
 
